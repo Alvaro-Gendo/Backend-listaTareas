@@ -1,4 +1,7 @@
 import express from "express";
+import morgan from "morgan";
+import cors from "cors";
+import path from "path";
 
 const app = express();
 
@@ -8,4 +11,12 @@ app.listen(app.get("port"), ()=>{
     console.log("Puerto " + app.get("port"))
 })
 
-console.log("hola mundo")
+app.use(morgan("dev"));
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+app.use(express.static(path.join(__dirname, "../public")));
+
+app.get("/", (req, res)=>{
+    res.send("esto es un prueba ")
+})
