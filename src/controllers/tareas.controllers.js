@@ -26,3 +26,15 @@ export const crearTarea = async (req, res) => {
     });
   }
 };
+
+export const obtenerTarea = async (req, res) => {
+  try {
+    const tareaBuscada = await Tarea.findById(req.params.id);
+    res.status(200).json(tareaBuscada);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({
+      message: "La tarea no fue encontrada",
+    });
+  }
+};
