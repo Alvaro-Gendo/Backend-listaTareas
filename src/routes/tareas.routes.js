@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { crearTarea, listaTarea, obtenerTarea } from "../controllers/tareas.controllers";
+import { crearTarea, editarTarea, listaTarea, obtenerTarea } from "../controllers/tareas.controllers";
 
 const rutas = Router();
 
@@ -9,7 +9,7 @@ rutas.route("/tarea")
 
 rutas.route("/tarea/:id")
 .get(obtenerTarea)
-.put()
+.put(editarTarea)
 .delete()
 
 export default rutas
